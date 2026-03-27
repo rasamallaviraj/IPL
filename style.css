@@ -1,0 +1,637 @@
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #13141f;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    
+    /* Neon Accents */
+    --accent-blue: #00d2ff;
+    --accent-blue-dark: #3a7bd5;
+    --accent-orange: #ff7e5f;
+    --accent-purple: #c084fc;
+    --accent-yellow: #fcd34d;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 16px;
+    
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.dark-theme {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Typography Specifics */
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glass Utility Classes */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-padding {
+    padding: 6rem 2rem;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 1.2rem 4rem;
+}
+
+.navbar.scrolled {
+    padding: 0.8rem 4rem;
+    background: rgba(10, 10, 15, 0.85);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #1b2034 0%, var(--bg-primary) 100%);
+    pointer-events: none;
+}
+
+.stadium-lights {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 60%);
+    filter: blur(40px);
+}
+
+.stadium-lights.right {
+    left: auto;
+    right: -10%;
+    top: 20%;
+    background: radial-gradient(circle, rgba(255, 126, 95, 0.1) 0%, transparent 60%);
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 5.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.glowing-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.glowing-btn:hover {
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.7);
+    transform: translateY(-3px);
+}
+
+.glowing-btn.outline {
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+}
+
+.glowing-btn.outline:hover {
+    background: rgba(0, 210, 255, 0.1);
+}
+
+/* Teams Grid */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.team-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-decoration: none;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+    z-index: 1;
+}
+
+.team-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    object-fit: contain;
+    transform: translateZ(50px);
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.6));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-card:hover .team-logo {
+    transform: translateZ(80px) scale(1.1);
+}
+
+.team-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    transform: translateZ(30px);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Dashboard Grid Split */
+.grid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transform-style: preserve-3d;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    transform: translateZ(40px);
+}
+
+.stat-info {
+    transform: translateZ(30px);
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.player-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0.2rem 0;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.cap-orange { border-top: 4px solid var(--accent-orange); }
+.cap-purple { border-top: 4px solid var(--accent-purple); }
+.cap-blue { border-top: 4px solid var(--accent-blue); }
+.cap-yellow { border-top: 4px solid var(--accent-yellow); }
+
+/* Winners Table */
+.winners-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.winners-table th, .winners-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.winners-table th {
+    font-weight: 600;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.winners-table tr:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+/* Fixtures */
+.fixtures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.fixture-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.fixture-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+}
+
+.fixture-teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.fixture-vs {
+    font-size: 1rem;
+    color: var(--accent-orange);
+}
+
+.fixture-details {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Prediction Card */
+.prediction-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.predicted-team {
+    margin: 2rem 0;
+    transform: translateZ(50px);
+}
+
+.team-logo-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+}
+
+.team-logo-hero {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px var(--team-primary));
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+    margin-top: 40px; /* Prevent touching top */
+}
+
+.team-logo-wrapper img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.team-logo-wrapper.skeleton {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { background: rgba(255,255,255,0.05); }
+    50% { background: rgba(255,255,255,0.1); }
+    100% { background: rgba(255,255,255,0.05); }
+}
+
+#predicted-name {
+    font-size: 2rem;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+}
+
+.prediction-bar-container {
+    margin: 2rem 0;
+    transform: translateZ(30px);
+}
+
+.prediction-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.prediction-bar {
+    height: 12px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.prediction-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Trophy & Threads */
+.trophy-bg-3d {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+.trophy-container {
+    position: fixed;
+    top: 55%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vh;
+    height: 100vh;
+    opacity: 0.35;
+    pointer-events: none;
+    perspective: 2000px;
+    z-index: -1;
+    filter: drop-shadow(0 0 80px rgba(255, 215, 0, 0.2));
+}
+.trophy-img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    animation: slowFloat 8s ease-in-out infinite, rotateTrophy 20s linear infinite;
+}
+@keyframes slowFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+@keyframes rotateTrophy {
+    0% { filter: hue-rotate(0deg) drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+    50% { filter: hue-rotate(180deg) drop-shadow(0 0 50px rgba(0,210,255,0.5)); }
+    100% { filter: hue-rotate(360deg) drop-shadow(0 0 30px rgba(255,255,255,0.3)); }
+}
+
+/* Enhanced 3D Tilt for all interactive cards */
+.tilt-card, .team-card, .player-card {
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+}
+.threads {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 210, 255, 0.05) 0px,
+        rgba(0, 210, 255, 0.05) 2px,
+        transparent 2px,
+        transparent 40px
+    ),
+    repeating-linear-gradient(
+        -45deg,
+        rgba(255, 126, 95, 0.05) 0px,
+        rgba(255, 126, 95, 0.05) 2px,
+        transparent 2px,
+        transparent 40px
+    );
+    animation: panThreads 20s linear infinite;
+    z-index: 0;
+}
+@keyframes panThreads {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* Countdown */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.time-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    border-bottom: 2px solid var(--accent-blue);
+}
+.time-box span {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    background: linear-gradient(to bottom, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.time-box p {
+    font-size: 1rem;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .grid-split { grid-template-columns: 1fr; }
+    .hero-title { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-title { font-size: 2.5rem; }
+    .section-padding { padding: 4rem 1rem; }
+}
+
+/* Custom Fire Animation */
+.srh-fire-anim {
+    animation: firePulse 1s ease-in-out infinite alternate !important;
+}
+@keyframes firePulse {
+    0% {
+        filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 140, 0, 0.6)) drop-shadow(0 0 45px rgba(255, 215, 0, 0.4));
+        transform: scale(1);
+    }
+    100% {
+        filter: drop-shadow(0 -15px 25px rgba(255, 69, 0, 1)) drop-shadow(0 -30px 45px rgba(255, 140, 0, 0.8)) drop-shadow(0 -45px 65px rgba(255, 215, 0, 0.6));
+        transform: scale(1.03);
+    }
+}
